@@ -1,4 +1,7 @@
 import React from 'react'
+import TruffleContract from "@truffle/contract";
+import Biding from './contracts/Bidding.json';
+import secp256k1 from "@aztec/secp256k1";
 import web3Obj from './helper'
 
 class App extends React.Component {
@@ -41,22 +44,33 @@ class App extends React.Component {
     }
   };
 
+  handleBid = async () => {
+    //0x60cd6638b6578d0bced19e5d8673d15a8d3a148136e914ea442b1cc9fd0970a2
+    console.log(web3Obj);
+    const BiddingContract = TruffleContract(Biding);
+    BiddingContract.setProvider(web3Obj.web3.currentProvider);
+    //const biddingContract = await BiddingContract.new();
+
+    const { public_key } = secp256k1.accountFromPrivateKey(
+      '0x60cd6638b6578d0bced19e5d8673d15a8d3a148136e914ea442b1cc9fd0970a2'
+    );
+    console.log({ public_key })
+  }
+
   render() {
     return (
       <div className="App">
         <div>
           { this.state.startButton === true ? <button onClick={this.enableTorus}>Start using Torus</button> : false }
         </div>
-        <div>
+        <ul>
           {/* <button onClick={this.enableTorus}>Enable Torus</button> */}
-          <div>MaxBID: { this.state.maxBid } </div>
-          <div>Account: {this.state.account}</div>
-          <div>Balance: {this.state.balance}</div>
+          <li>MaxBID: { this.state.maxBid }</li>
+          <li>Account: {this.state.account}</li>
+          <li>Balance: {this.state.balance}</li>
           <input type={"number"} value={ this.state.bid } placeholder={"Bid"}/>
-          <button onClick={()=> {
-            console.log("POST " );
-          }} >BID NOW</button>
-        </div>
+          <button onClick={ this.handleBid } >BID NOW</button>
+        </ul>
       </div>
     )
   }

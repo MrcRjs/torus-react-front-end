@@ -2,8 +2,11 @@
   "name": "react-dynamic-import",
   "version": "0.1.0",
   "private": true,
-   "homepage" : "https://devmarcorojas.com/torus-react-front-end",
+  "homepage": "https://devmarcorojas.com/torus-react-front-end ",
   "dependencies": {
+    "@aztec/secp256k1": "^1.0.1",
+    "@toruslabs/torus-embed": "0.0.28",
+    "@truffle/contract": "^4.0.32",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
