@@ -2,6 +2,7 @@
   "name": "react-dynamic-import",
   "version": "0.1.0",
   "private": true,
+   "homepage" : "https://devmarcorojas.com/torus-react-front-end",
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
